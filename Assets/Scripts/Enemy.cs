@@ -2,6 +2,11 @@ using UnityEngine;
 
 public abstract class Enemy : Charactor
 {
+
+    public int DamageHit { get; protected set; }
+
+    public abstract void Behavior(); //method signature
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
