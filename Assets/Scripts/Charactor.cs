@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Charactor : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
     private int health;
     public int Health
