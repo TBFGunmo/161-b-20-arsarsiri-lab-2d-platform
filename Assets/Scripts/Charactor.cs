@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Character : MonoBehaviour
 {
@@ -6,11 +7,20 @@ public abstract class Character : MonoBehaviour
     public int Health
     {
         get => health;
-        set => health = (value < 0) ? 0 : value;
+        set 
+        { 
+            health = (value < 0) ? 0 : value;
+            HpBarAdjust();
+        }
     }
+
+    private int maxHealth;
 
     protected Animator anim;
     protected Rigidbody2D rb;
+
+    [SerializeField] private Slider hpBar;
+
 
     //initialize variable
 
@@ -22,6 +32,7 @@ public abstract class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
+        maxHealth = Health;
 
     }
 
@@ -45,6 +56,11 @@ public abstract class Character : MonoBehaviour
         }
     }
 
+
+    private void HpBarAdjust() 
+    {
+        hpBar.value = (float)Health / (float)maxHealth;
+    }
 
     void Start()
     {
